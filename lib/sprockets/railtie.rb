@@ -1,5 +1,4 @@
 # require "action_controller/railtie"
-require "extensions/application_ext"
 
 module Sprockets
   autoload :Bootstrap,      "sprockets/bootstrap"
@@ -10,22 +9,22 @@ module Sprockets
 
   # TODO: Get rid of config.assets.enabled
   class Railtie < ::Rails::Railtie
-    # config.action_controller.default_asset_host_protocol = :relative
-    config.assets = ActiveSupport::OrderedOptions.new
-    # config.assets.enabled                  = false
-    config.assets.paths                    = []
-    config.assets.precompile               = [ Proc.new{ |path| !['.js', '.css'].include?(File.extname(path)) },
-                                               /(?:\/|\\|\A)application\.(css|js)$/ ]
-    config.assets.prefix                   = "/assets"
-    config.assets.version                  = ''
-    config.assets.debug                    = false
-    config.assets.compile                  = true
-    config.assets.digest                   = false
-    config.assets.manifest                 = nil
-    config.assets.cache_store              = false
-    config.assets.js_compressor            = nil
-    config.assets.css_compressor           = nil
-    config.assets.initialize_on_precompile = true
+    # # config.action_controller.default_asset_host_protocol = :relative
+    # config.assets = ActiveSupport::OrderedOptions.new
+    # # config.assets.enabled                  = false
+    # config.assets.paths                    = []
+    # config.assets.precompile               = [ Proc.new{ |path| !['.js', '.css'].include?(File.extname(path)) },
+    #                                            /(?:\/|\\|\A)application\.(css|js)$/ ]
+    # config.assets.prefix                   = "/assets"
+    # config.assets.version                  = ''
+    # config.assets.debug                    = false
+    # config.assets.compile                  = true
+    # config.assets.digest                   = false
+    # config.assets.manifest                 = nil
+    # config.assets.cache_store              = false
+    # config.assets.js_compressor            = nil
+    # config.assets.css_compressor           = nil
+    # config.assets.initialize_on_precompile = true
 
     rake_tasks do
       load "sprockets/assets.rake"
