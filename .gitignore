@@ -4,3 +4,5 @@ log/*.log
 tmp/
 
 Gemfile.lock
+
+sprockets_rails3_backport-*.gem
