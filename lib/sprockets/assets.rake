@@ -88,7 +88,7 @@ namespace :assets do
     if Rails.application.config.assets.initialize_on_precompile
       Rake::Task["environment"].invoke
     else
-      Rails.application.initialize!(:assets)
+      Rails.application.initialize!
       Sprockets::Bootstrap.new(Rails.application).run
     end
   end
