@@ -35,14 +35,20 @@ namespace :assets do
       # Ensure that action view is loaded and the appropriate
       # sprockets hooks get executed
       _ = ActionView::Base
-
       config = Rails.application.config
       config.assets.compile = true
-      config.assets.digest  = digest unless digest.nil?
+      config.assets.compress = true
+      if digest.nil?
+        if ENV['ASSETS_DIGEST'].present?
+          config.assets.digest = (ENV['ASSETS_DIGEST'].to_s == 'true')
+        end
+      else
+        config.assets.digest = digest
+      end
       config.assets.digests = {}
 
       env      = Rails.application.assets
-      target   = File.join(Rails.public_path, config.assets.prefix)
+      target   = ENV['ASSETS_TARGET'] || File.join(Rails.public_path, config.assets.prefix)
       compiler = Sprockets::StaticCompiler.new(env,
                                                target,
                                                config.assets.precompile,
@@ -79,7 +85,7 @@ namespace :assets do
   namespace :clean do
     task :all => ["assets:environment", "tmp:cache:clear"] do
       config = Rails.application.config
-      public_asset_path = File.join(Rails.public_path, config.assets.prefix)
+      public_asset_path = ENV['ASSETS_TARGET'] || File.join(Rails.public_path, config.assets.prefix)
       rm_rf public_asset_path, :secure => true
     end
   end
