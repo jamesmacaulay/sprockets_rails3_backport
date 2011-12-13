@@ -57,10 +57,10 @@ module Sprockets
         options[:body] ? "#{path}?body=1" : path
       end
 
-      def image_path(source)
-        asset_path(source)
-      end
-      alias_method :path_to_image, :image_path # aliased to avoid conflicts with an image_path named route
+      # def image_path(source)
+      #   asset_path(source)
+      # end
+      # alias_method :path_to_image, :image_path # aliased to avoid conflicts with an image_path named route
 
       def javascript_path(source)
         asset_path(source)
