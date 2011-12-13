@@ -36,7 +36,7 @@ module Sprockets
         filename = File.join(target, path)
         FileUtils.mkdir_p File.dirname(filename)
         asset.write_to(filename)
-        asset.write_to("#{filename}.gz") if filename.to_s =~ /\.(css|js)$/
+        # asset.write_to("#{filename}.gz") if filename.to_s =~ /\.(css|js)$/
       end
     end
 
