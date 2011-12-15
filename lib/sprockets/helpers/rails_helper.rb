@@ -142,8 +142,8 @@ module Sprockets
               return asset.digest_path
             end
             return logical_path
-          else
-            raise AssetNotPrecompiledError.new("#{logical_path} isn't precompiled")
+          # else
+          #   raise AssetNotPrecompiledError.new("#{logical_path} isn't precompiled")
           end
         end
 
@@ -151,7 +151,10 @@ module Sprockets
           if source[0] == ?/
             source
           else
-            source = digest_for(source) unless options[:digest] == false
+            unless options[:digest] == false
+              digest = digest_for(source)
+              source = digest if digest
+            end
             source = File.join(dir, source)
             source = "/#{source}" unless source =~ /^\//
             source
