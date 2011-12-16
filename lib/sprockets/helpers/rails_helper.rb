@@ -63,12 +63,12 @@ module Sprockets
       # alias_method :path_to_image, :image_path # aliased to avoid conflicts with an image_path named route
 
       def javascript_path(source)
-        asset_path(source)
+        asset_path(source, :ext => 'js')
       end
       alias_method :path_to_javascript, :javascript_path # aliased to avoid conflicts with an javascript_path named route
 
       def stylesheet_path(source)
-        asset_path(source)
+        asset_path(source, :ext => 'css')
       end
       alias_method :path_to_stylesheet, :stylesheet_path # aliased to avoid conflicts with an stylesheet_path named route
 
