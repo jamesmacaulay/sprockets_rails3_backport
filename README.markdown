@@ -1,5 +1,8 @@
 # Backport of Rails 3.1.x Sprockets integration to Rails 3.0.x
 
+Most code has been extracted from the [Rails 3-1-stable branch](https://github.com/rails/rails/tree/3-1-stable). Modified to suit [our needs](http://www.shopify.com).
+
+
 ## Usage
 
 In your `Gemfile`:
