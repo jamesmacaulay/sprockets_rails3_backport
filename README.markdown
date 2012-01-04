@@ -8,6 +8,12 @@ In your `Gemfile`:
 
     gem "sprockets_rails3_backport"
 
+...plus whatever supplementary gems you want for the asset pipeline:
+
+    gem 'coffee-script', '2.2.0'
+    gem 'therubyracer', '0.9.9'
+    gem 'uglifier', '>= 1.0.3'
+
 In your `routes.rb`:
 
     MyApp::Application.routes.draw do
@@ -36,7 +42,7 @@ Here are the various `config.assets` options and their defaults:
 
 ## Differences from Rails 3.1
 
-This gem was made for [Shopify](http://www.shopify.com)'s use, and I've made some changes to some behaviour that either didn't work in Rails 3.0, or didn't make sense for Shopify:
+This gem was made for [Shopify](http://www.shopify.com)'s use, and I've made changes to some behaviour that either didn't work in Rails 3.0, or didn't make sense for Shopify:
 
 * `image_path` (and therefore `image_tag`) [do not use the asset pipeline](https://github.com/jamesmacaulay/sprockets_rails3_backport/blob/d4cd5e5/lib/sprockets/helpers/rails_helper.rb#L60-63).
 * Rails 3.0 does not have support for initializer groups, so `rake assets:precompile` [cannot do the trick of partially loading the environment](https://github.com/jamesmacaulay/sprockets_rails3_backport/blob/d4cd5e5/lib/sprockets/assets.rake#L97-98).
