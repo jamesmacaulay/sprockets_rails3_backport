@@ -3,8 +3,7 @@ module Rails
     class Configuration < ::Rails::Engine::Configuration
       # we need to do this over again for Rails::Application::Configuration because
       # the Rails 3.0 implementation squashes the paths.vendor that we made in
-      # application_ext.rb.
-      
+      # engine_ext.rb.
       def paths_with_vendor_assets
         @paths ||= begin
           paths = paths_without_vendor_assets
